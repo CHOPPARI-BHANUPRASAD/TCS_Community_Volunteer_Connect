@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo"> Volunteer Connect</h1>
+            <div class="nav-links">
+                <!-- Display logged-in user's name -->
+                <span id="userName" class="user-name"></span>
+                <!--Logout button-->
+                <button onclick="logout()" class="btn btn--secondary btn--sm">Logout</button>
+            </div>
+        </div>
+    </nav>
+<!--Dashboard Layout-->
+    <div class="dashboard-container container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <button class="sidebar-link active" data-section="opportunities"> Browse Opportunities</button>
+                <button class="sidebar-link" data-section="my-applications"> My Applications</button>
+                <button class="sidebar-link" data-section="profile"> Profile</button>
+            </nav>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Opportunities Section -->
+            <section id="opportunities" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Available Opportunities</h2>
+                    <!-- Search bar for filtering opportunities -->
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search opportunities..." class="form-control">
+                        <button onclick="searchOpportunities()" class="btn btn--primary">Search</button>
+                    </div>
+                </div>
+                <!-- Dropdown filter for locations -->
+                <div class="filters">
+                    <select id="locationFilter" class="form-control">
+                        <option value="">All Locations</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Hyderabad">Tamilnadu</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Secunderabad">Secunderabad</option>
+                        <option value="Warangal">Warangal</option>
+                        <option value="Karimnagar">Karimnagar</option>
+                        <option value="Nizamabad">Nizamabad</option>
+                        <option value="Khammam">Khammam</option>
+                        <option value="Nalgonda">Nalgonda</option>
+                        <option value="Mahbubnagar">Mahbubnagar</option>
+                        <option value="Siddipet">Siddipet</option>
+                        <option value="Adilabad">Adilabad</option>
+                        <option value="Mancherial">Mancherial</option>
+                        <option value="Ramagundam">Ramagundam</option>
+                        <option value="Jagtial">Jagtial</option>
+                        <option value="Suryapet">Suryapet</option>
+                        <option value="Miryalaguda">Miryalaguda</option>
+                        <option value="Zaheerabad">Zaheerabad</option>
+                        <option value="Vikarabad">Vikarabad</option>
+                        <option value="Medchal">Medchal</option>
+                        <option value="Kothagudem">Kothagudem</option>
+                        <option value="Bhongir">Bhongir</option>
+                        <option value="Chevella">Chevella</option>
+                        <option value="Kamareddy">Kamareddy</option>
+                        <option value="Bodhan">Bodhan</option>
+                        <option value="Sangareddy">Sangareddy</option>
+                        <option value="Tandur">Tandur</option>
+                        <option value="Nagarkurnool">Nagarkurnool</option>
+                        <option value="Mahadevpur">Mahadevpur</option>
+                        <option value="Gadwal">Gadwal</option>
+                        <option value="Hanamkonda">Hanamkonda</option>
+                        <option value="Medak">Medak</option>
+                        <option value="Nirmal">Nirmal</option>
+                        <option value="Jangaon">Jangaon</option>
+                        <option value="Bhainsa">Bhainsa</option>
+                    </select>
+                </div>
+                <div id="opportunitiesList" class="opportunities-grid"></div>
+            </section>
+
+            <!-- My Applications Section -->
+            <section id="my-applications" class="dashboard-section hidden">
+                <h2>My Applications</h2>
+                <div id="applicationsList" class="applications-list"></div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section hidden">
+                <h2>My Profile</h2>
+                <div id="profileContent" class="profile-content"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal hidden">
+        <div class="modal-content card">
+            <div class="card__body">
+                <h3 id="modalTitle"></h3>
+                <div id="modalBody"></div>
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label class="form-label">Why do you want to volunteer?</label>
+                        <textarea class="form-control" id="applicationMessage" rows="4" required></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <!-- Modal buttons -->
+                        <button type="button" onclick="closeModal()" class="btn btn--secondary">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Linking JavaScript file for dashboard functionality -->
+    <script src="script.js"></script>
+</body>
+</html>
